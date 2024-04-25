@@ -1,0 +1,232 @@
+<?php
+
+session_start();
+
+
+
+if (!isset($_SESSION['user'])) {
+
+    $_SESSION['user'] = [];
+
+}
+
+
+
+function getUser() {
+
+    return isset($_SESSION['user']) ? $_SESSION['user'] : [];
+
+}
+
+
+
+function dbCheckUser(user, pass) {
+
+	if (exist(user, pass)) {
+
+		$_SESSION['user']=user	
+
+	}	
+
+}
+
+
+
+// Check if the 'items' array exists in the session, if not, initialize it
+
+if (!isset($_SESSION['items'])) {
+
+    $_SESSION['items'] = [];
+
+}
+
+
+
+
+
+
+
+// Create operation
+
+if (isset($_POST['add'])) {
+
+    $name = $_POST['name'];
+
+    $price = $_POST['price'];
+
+
+
+    if ($_SESSION['isAdmin']) {
+
+    	
+
+    } else {
+
+    	
+
+    }
+
+    
+
+    // Add item to the 'items' array in the session
+
+    $_SESSION['items'][] = ['name' => $name, 'price' => $price];
+
+}
+
+
+
+// Read operation
+
+function getItems() {
+
+    return isset($_SESSION['items']) ? $_SESSION['items'] : [];
+
+}
+
+
+
+// Update operation
+
+if (isset($_POST['update'])) {
+
+    $index = $_POST['index'];
+
+    $name = $_POST['name'];
+
+    $price = $_POST['price'];
+
+
+
+    // Update item in the 'items' array in the session
+
+    if (isset($_SESSION['items'][$index])) {
+
+        $_SESSION['items'][$index] = ['name' => $name, 'price' => $price];
+
+    }
+
+}
+
+
+
+// Delete operation
+
+if (isset($_GET['delete'])) {
+
+    $index = $_GET['delete'];
+
+
+
+    // Remove item from the 'items' array in the session
+
+    if (isset($_SESSION['items'][$index])) {
+
+        unset($_SESSION['items'][$index]);
+
+    }
+
+}
+
+?>
+
+
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+
+    <title>PHP CRUD with Session</title>
+
+</head>
+
+<body>
+
+    <h2>Add Item</h2>
+
+    <form method="post">
+
+        <label>Name:</label>
+
+        <input type="text" name="name" required>
+
+        <label>Price:</label>
+
+        <input type="text" name="price" required>
+
+        <button type="submit" name="add">Add</button>
+
+    </form>
+
+
+
+    <h2>Items</h2>
+
+    <table border="1">
+
+        <tr>
+
+            <th>Name</th>
+
+            <th>Price</th>
+
+            <th>Action</th>
+
+        </tr>
+
+        <?php foreach (getItems() as $index => $item): ?>
+
+            <tr>
+
+                <td><?php echo $item['name']; ?></td>
+
+                <td><?php echo $item['price']; ?></td>
+
+                <td>
+
+                	<?php if ($_SESSION['isAdmin']) { ?>
+
+                		<a href="?delete=<?php echo $index; ?>">Delete</a>
+
+                    
+
+                	<button onclick="editItem(<?php echo $index; ?>)">Edit</button>
+
+                </td>
+
+            </tr>
+
+        <?php endforeach; ?>
+
+    </table>
+
+
+
+    <script>
+
+        function editItem(index) {
+
+            var item = <?php echo json_encode(getItems()); ?>[index];
+
+            var name = prompt("Enter new name:", item.name);
+
+            var price = prompt("Enter new price:", item.price);
+
+
+
+            if (name !== null && price !== null) {
+
+                window.location.href = "?edit=" + index + "&name=" + name + "&price=" + price;
+
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>
+

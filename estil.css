@@ -1,0 +1,37 @@
+body {
+    background-color: #f8f9fa;
+    color: #343a40;
+}
+
+.card {
+    margin-bottom: 20px;
+    border: 1px solid #dee2e6;
+    border-radius: 0.25rem;
+}
+
+.card-header {
+    background-color: #007bff;
+    color: #fff;
+    font-weight: bold;
+    border-bottom: none;
+
+    background-image: url("images/iphone_15_pro_max.jpg");
+    background-size: 150px;
+    width: 300px;
+    height: 300px;
+    border: solid 2px red;
+}
+
+.card-body {
+    padding: 1.25rem;
+}
+
+.btn-buy {
+    background-color: #28a745;
+    border-color: #28a745;
+}
+
+.btn-buy:hover {
+    background-color: #218838;
+    border-color: #1e7e34;
+}
