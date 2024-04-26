@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="ca">
+<html lang="ca" data-bs-theme="dark">
 <head>
     <!-- Metadades necessàries -->
     <meta charset="utf-8">
@@ -33,8 +33,9 @@
             foreach ($result as $row) {
                 echo "<div class='col-md-4'>";
                 echo "<div class='card'>";
-                echo "<div class='card-header'><img src='images/iphone15_pro_max.jpg' alt='" . $row['Nom'] . "'>" . $row['Nom'] . '</div>';
+                echo "<div class='card-img-top'><img src='" . $row['Imatge'] . "'>" . '</div>';
                 echo "<div class='card-body'>";
+                echo '<p class="card-text">' . $row['Nom'] . '</p>';
                 echo "<p class='card-text'>Preu: " . $row['Preu'] . '</p>';
                 echo "<p class='card-text'>Stock: " . $row['Stock'] . '</p>';
                 echo "<a href='?action=show&id=" . $row['Id'] . "' class='btn btn-primary mr-1'>Veure</a>";
