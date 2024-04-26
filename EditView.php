@@ -53,6 +53,11 @@
                 <div class="col-sm-10">
                     <input type="text" class="form-control-plaintext" id="Descripció" name="Descripció" value="<?php echo isset($result[0]['Descripció']) ? $result[0]['Descripció'] : ''; ?>">
                 </div>
+                <div class="form-group row">
+                <label for="Imatge" class="col-sm-2 col-form-label font-weight-bold">Imatge</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control-plaintext" id="Imatge" name="Imatge" value="<?php echo isset($result[0]['Imatge']) ? $result[0]['Imatge'] : ''; ?>">
+                </div>
             </div>
             <!--
             <div class="form-group row">

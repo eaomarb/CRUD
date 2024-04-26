@@ -59,6 +59,7 @@ function modQuery($Id = null) {
  * @param string $Stock
  * @param string $Mides
  * @param string $Descripció
+ * @param string $Imatge
  * @return array
  */
 function modAdd($Nom, $Preu, $Stock, $Mides, $Descripció, $Imatge) {
@@ -88,6 +89,7 @@ function modAdd($Nom, $Preu, $Stock, $Mides, $Descripció, $Imatge) {
  * @param string $Stock
  * @param string $Mides
  * @param string $Descripció
+ * @param string $Imatge
  * @return array
  */
 function modUpdate($Id,$Nom, $Preu, $Stock, $Mides, $Descripció, $Imatge) {
