@@ -31,7 +31,7 @@
             <div class="form-group row">
                 <label for="Preu" class="col-sm-2 col-form-label font-weight-bold">Preu</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" name="Preu" id="Preu" required>
+                    <input type="number" step=".01" class="form-control" name="Preu" id="Preu" required>
                 </div>
             </div>
             <div class="form-group row">

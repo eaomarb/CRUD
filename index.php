@@ -8,7 +8,7 @@
  * En funció de la petició, farà unes crIdes o unes altres al controlador (AlumneController.php)
  */
 
- require("BotigaController.php");
+ require("controllers/BotigaController.php");
 
 if (isset($_GET['action'])) 
 {

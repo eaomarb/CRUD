@@ -1,7 +1,3 @@
-body {
-    color: #343a40;
-}
-
 .card-header {
     background-color: #007bff;
     color: #fff;
@@ -11,6 +7,7 @@ body {
 
 .card-body {
     padding: 1.25rem;
+    width: 18rem;
 }
 
 .btn-buy {

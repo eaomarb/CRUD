@@ -53,7 +53,9 @@
                 <div class="col-sm-10">
                     <input type="text" class="form-control-plaintext" id="Descripció" name="Descripció" value="<?php echo isset($result[0]['Descripció']) ? $result[0]['Descripció'] : ''; ?>">
                 </div>
-                <div class="form-group row">
+            </div>
+            
+            <div class="form-group row">
                 <label for="Imatge" class="col-sm-2 col-form-label font-weight-bold">Imatge</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control-plaintext" id="Imatge" name="Imatge" value="<?php echo isset($result[0]['Imatge']) ? $result[0]['Imatge'] : ''; ?>">
@@ -64,10 +66,10 @@
                 <label for="cicle" class="col-sm-2 col-form-label font-weight-bold">Cicle</label>
                 <div class="col-sm-10">
                     <select class="form-control" id="cicle" name="cicle">
-                        <option value="SMX" <?php //echo (isset($result[0]['cicle']) && $result[0]['cicle'] == 'SMX') ? 'selected' : ''; ?>>SMX</option>
-                        <option value="ASIX" <?php //echo (isset($result[0]['cicle']) && $result[0]['cicle'] == 'ASIX') ? 'selected' : ''; ?>>ASIX</option>
-                        <option value="DAM" <?php //cho (isset($result[0]['cicle']) && $result[0]['cicle'] == 'DAM') ? 'selected' : ''; ?>>DAM</option>
-                        <option value="DAW" <?php //echo (isset($result[0]['cicle']) && $result[0]['cicle'] == 'DAW') ? 'selected' : ''; ?>>DAW</option>
+                        <option value="SMX" <?php // echo (isset($result[0]['cicle']) && $result[0]['cicle'] == 'SMX') ? 'selected' : ''; ?>>SMX</option>
+                        <option value="ASIX" <?php // echo (isset($result[0]['cicle']) && $result[0]['cicle'] == 'ASIX') ? 'selected' : ''; ?>>ASIX</option>
+                        <option value="DAM" <?php // cho (isset($result[0]['cicle']) && $result[0]['cicle'] == 'DAM') ? 'selected' : ''; ?>>DAM</option>
+                        <option value="DAW" <?php // echo (isset($result[0]['cicle']) && $result[0]['cicle'] == 'DAW') ? 'selected' : ''; ?>>DAW</option>
                     </select>
                 </div>
             </div>

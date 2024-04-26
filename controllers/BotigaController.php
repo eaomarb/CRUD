@@ -1,5 +1,5 @@
 <?php
-	require("BotigaModel.php");
+	require("models/BotigaModel.php");
 	
 	function getProductes() //Per obtenir els productes
 	{
@@ -34,19 +34,19 @@
 	{
 		$result = getProductes();
 		$missatge = $msg;
-		require_once("MainView.php");
+		require_once("views/MainView.php");
 	}
 	
 	function loadNewProductesView()
 	{
-		require_once("NewView.php");
+		require_once("views/NewView.php");
 	}
 	
 	function loadEditProductesView($Id)
 {
     $result = getProducte($Id);
     if ($result) {
-        require_once("EditView.php");
+        require_once("views/EditView.php");
     } else {
         // Si no troba el producte
         $msg = "El producte no existeix.";
@@ -58,7 +58,7 @@ function loadShowProductesView($Id)
 {
     $result = getProducte($Id);
     if ($result) {
-        require_once("ShowView.php");
+        require_once("views/ShowView.php");
     } else {
         // Si no troba el producte
         $msg = "El producte no existeix.";
