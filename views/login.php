@@ -21,7 +21,7 @@
                 </div>
                 <div class="form-group">
                     <label for="password">Contrasenya</label>
-                    <input type="password" name="password" id="password" class="form-control" placeholder="contrasenya" required>
+                    <input type="password" name="contrasenya" id="contrasenya" class="form-control" placeholder="contrasenya" required>
                 </div>
                 <button type="submit" class="btn btn-primary">Login</button>
             </form>
