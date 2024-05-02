@@ -12,7 +12,7 @@ function modConnect() {
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "botigaCRUD";
+    $dbname = "botigacrud";
 
     try {
         $GLOBALS['conn'] = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
