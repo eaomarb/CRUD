@@ -10,7 +10,7 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <form class="login-form" action="login.php" method="post">
+            <form class="login-form" action="../controllers/register.php" method="post">
                 <h2>Register</h2>
                 <?php if (isset($_GET['error'])) { ?>
                     <p class="error"><?php echo $_GET['error']; ?></p>
