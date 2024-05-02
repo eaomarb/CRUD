@@ -12,7 +12,7 @@ function modConnect() {
     $servername = "localhost";
     $username = "root";
     $password = "";
-    $dbname = "botigacrud";
+    $dbname = "crud";
 
     try {
         $GLOBALS['conn'] = new PDO("mysql:host=$servername;dbname=$dbname", $username, $password);
@@ -35,10 +35,10 @@ function modQuery($Id = null) {
 
     try {
         if ($Id != null) {
-            $stmt = $GLOBALS['conn']->prepare("SELECT * FROM Productes WHERE Id=" . $Id); 
+            $stmt = $GLOBALS['conn']->prepare("SELECT * FROM productes WHERE Id=" . $Id); 
         }
         else {
-            $stmt = $GLOBALS['conn']->prepare("SELECT * FROM Productes ORDER BY Id ASC"); 
+            $stmt = $GLOBALS['conn']->prepare("SELECT * FROM productes ORDER BY Id ASC"); 
         }
         $stmt->execute();
 
@@ -66,7 +66,7 @@ function modAdd($Nom, $Preu, $Stock, $Mides, $Descripció, $Imatge) {
     modConnect();
 		
 		try {
-			$sql = "INSERT INTO Productes (Nom, Preu, Stock, Mides, Descripció, Imatge) 
+			$sql = "INSERT INTO productes (Nom, Preu, Stock, Mides, Descripció, Imatge) 
             VALUES ('" . $Nom . "', '" . $Preu . "', '" . $Stock . "', '" . $Mides . "', '" . $Descripció . "', '" . $Imatge . "')";
 			// use exec() because no results are returned
 			if ($GLOBALS['conn']->exec($sql)) {
@@ -96,7 +96,7 @@ function modUpdate($Id,$Nom, $Preu, $Stock, $Mides, $Descripció, $Imatge) {
     modConnect();
 		
 		try {
-			$sql = "UPDATE Productes
+			$sql = "UPDATE productes
              SET Nom='" . $Nom . "', Preu='" . $Preu . "', Stock='" . $Stock . "', Mides='" . $Mides . "', Descripció='" . $Descripció . "', Imatge='" . $Imatge . "'  
              WHERE id='" . $Id . "'";
 			// use exec() because no results are returned
@@ -122,7 +122,7 @@ function modDelete($Id) {
     modConnect();
 		
 		try {
-			$sql = "DELETE FROM Productes WHERE Id=".$Id;
+			$sql = "DELETE FROM productes WHERE Id=".$Id;
 			// use exec() because no results are returned
 			if ($GLOBALS['conn']->exec($sql)){
 				return ["Success" => "El producte s'ha eliminat correctament"];

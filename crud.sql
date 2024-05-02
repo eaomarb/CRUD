@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.2.1
+-- version 5.2.1deb1
 -- https://www.phpmyadmin.net/
 --
--- Servidor: 127.0.0.1
--- Tiempo de generación: 02-05-2024 a las 20:36:43
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
+-- Host: localhost
+-- Generation Time: May 02, 2024 at 06:54 PM
+-- Server version: 10.11.6-MariaDB-0+deb12u1
+-- PHP Version: 8.2.7
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -18,13 +18,13 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Base de datos: `botigacrud`
+-- Database: `crud`
 --
 
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `productes`
+-- Table structure for table `productes`
 --
 
 CREATE TABLE `productes` (
@@ -38,7 +38,7 @@ CREATE TABLE `productes` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `productes`
+-- Dumping data for table `productes`
 --
 
 INSERT INTO `productes` (`Id`, `Nom`, `Preu`, `Stock`, `Mides`, `Descripció`, `Imatge`) VALUES
@@ -52,54 +52,54 @@ INSERT INTO `productes` (`Id`, `Nom`, `Preu`, `Stock`, `Mides`, `Descripció`, `
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `usuarios`
+-- Table structure for table `usuaris`
 --
 
-CREATE TABLE `usuarios` (
-  `id` int(11) NOT NULL,
-  `usuari` varchar(50) NOT NULL,
-  `contrasenya` varchar(255) NOT NULL,
-  `user_type` enum('user','admin','editor') NOT NULL DEFAULT 'user'
+CREATE TABLE `usuaris` (
+  `Id` int(11) NOT NULL,
+  `Usuari` varchar(50) NOT NULL,
+  `Contrasenya` varchar(255) NOT NULL,
+  `Rols` enum('user','admin','editor') NOT NULL DEFAULT 'user'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `usuarios`
+-- Dumping data for table `usuaris`
 --
 
-INSERT INTO `usuarios` (`id`, `usuari`, `contrasenya`, `user_type`) VALUES
+INSERT INTO `usuaris` (`Id`, `Usuari`, `Contrasenya`, `Rols`) VALUES
 (1, 'fran', '$2y$10$VnRDQRIy14VPh940LohQG.JUTGJeNvZMLpPsHLKUYiEeOui4ooYF2', 'user');
 
 --
--- Índices para tablas volcadas
+-- Indexes for dumped tables
 --
 
 --
--- Indices de la tabla `productes`
+-- Indexes for table `productes`
 --
 ALTER TABLE `productes`
   ADD PRIMARY KEY (`Id`);
 
 --
--- Indices de la tabla `usuarios`
+-- Indexes for table `usuaris`
 --
-ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id`);
+ALTER TABLE `usuaris`
+  ADD PRIMARY KEY (`Id`);
 
 --
--- AUTO_INCREMENT de las tablas volcadas
+-- AUTO_INCREMENT for dumped tables
 --
 
 --
--- AUTO_INCREMENT de la tabla `productes`
+-- AUTO_INCREMENT for table `productes`
 --
 ALTER TABLE `productes`
   MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
 
 --
--- AUTO_INCREMENT de la tabla `usuarios`
+-- AUTO_INCREMENT for table `usuaris`
 --
-ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+ALTER TABLE `usuaris`
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
