@@ -1,3 +1,18 @@
+<?php
+session_start();
+
+// Verificar si el usuario ha iniciado sesión
+if(isset($_SESSION['username'])) {
+    $username = $_SESSION['username'];
+} else {
+    // Redirigir al usuario al inicio de sesión si no ha iniciado sesión
+    header("Location: login.php");
+    exit();
+}
+?>
+
+
+
 <!doctype html>
 <html lang="ca">
 
@@ -15,6 +30,8 @@
     <div class="btn float-right">
         <a href="views/login.php" class="btn btn-primary mr-2">Login</a>
         <a href="views/register.php" class="btn btn-secondary">Register</a>
+        <a href="views/register.php" class="btn btn-danger">Tancar sesio</a>
+        <p>Benvingut, <?php echo $username; ?>!</p>
     </div>
     <div class="container">
         <div class="py-5 text-center">
