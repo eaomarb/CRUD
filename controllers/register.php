@@ -15,7 +15,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
         if ($stmt->rowCount() > 0) {
             $error = "El usuario ya existe.";
-            header('Location: register.php?error=' . urlencode($error));
+            header('Location: register_form.php?error=' . urlencode($error));
             exit;
         } else {
             // Hash de la contraseña antes de guardarla en la base de datos
@@ -25,16 +25,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $stmt = $conn->prepare("INSERT INTO usuaris (Usuari, Contrasenya) VALUES (:usuari, :contrasenya)");
             $stmt->bindParam(':usuari', $usuari);
             $stmt->bindParam(':contrasenya', $hashed_password);
-            $stmt->execute();
-
-            $_SESSION['loggedin'] = true;
-            $_SESSION['username'] = $usuari;
-            header('Location: ../index.php');
-            exit;
+            if ($stmt->execute()) {
+                $_SESSION['loggedin'] = true;
+                $_SESSION['username'] = $usuari;
+                header('Location: ../index.php');
+                exit;
+            } else {
+                $error = "Error al registrar el usuario.";
+                header('Location: register_form.php?error=' . urlencode($error));
+                exit;
+            }
         }
     } else {
         $error = "Faltan campos.";
-        header('Location: register.php?error=' . urlencode($error));
+        header('Location: register_form.php?error=' . urlencode($error));
         exit;
     }
 }

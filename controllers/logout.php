@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-// Destruir totes les variables de sessió
+// Destruir todas las variables de sesión
 $_SESSION = array();
 
 if (ini_get("session.use_cookies")) {
@@ -12,10 +12,10 @@ if (ini_get("session.use_cookies")) {
     );
 }
 
-// Finalment, destruir la sessió
+// Finalmente, destruir la sesión
 session_destroy();
 
-// Redirigir l'usuari a la pàgina d'inici de sessió
+// Redirigir al usuario a la página de inicio de sesión
 header("Location: login.php");
 exit;
 ?>
