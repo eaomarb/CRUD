@@ -2,10 +2,10 @@
 -- version 5.2.1deb1
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: May 02, 2024 at 06:54 PM
+-- Host: localhost:3306
+-- Generation Time: May 02, 2024 at 11:08 PM
 -- Server version: 10.11.6-MariaDB-0+deb12u1
--- PHP Version: 8.2.7
+-- PHP Version: 8.2.18
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -59,15 +59,19 @@ CREATE TABLE `usuaris` (
   `Id` int(11) NOT NULL,
   `Usuari` varchar(50) NOT NULL,
   `Contrasenya` varchar(255) NOT NULL,
-  `Rols` enum('user','admin','editor') NOT NULL DEFAULT 'user'
+  `Administrador` tinyint(1) NOT NULL DEFAULT 0,
+  `Editor` tinyint(1) NOT NULL DEFAULT 0
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `usuaris`
 --
 
-INSERT INTO `usuaris` (`Id`, `Usuari`, `Contrasenya`, `Rols`) VALUES
-(1, 'fran', '$2y$10$VnRDQRIy14VPh940LohQG.JUTGJeNvZMLpPsHLKUYiEeOui4ooYF2', 'user');
+INSERT INTO `usuaris` (`Id`, `Usuari`, `Contrasenya`, `Administrador`, `Editor`) VALUES
+(1, 'fran', '$2y$10$VnRDQRIy14VPh940LohQG.JUTGJeNvZMLpPsHLKUYiEeOui4ooYF2', 1, 0),
+(7, 'omar', '$2y$10$aIGBIHTj2AqEEwHaZiDRNeyrFlckHGUsgsC1qvncg6YCuRhe3BTfS', 1, 0),
+(8, 'klk', '$2y$10$t8DCaRO7gPd01iqQA6nKfuVubpnLom9CdeHYmBzv28yIISIrJmbJu', 1, 0),
+(9, 'alo', '$2y$10$kkHljIdBA.u2dmjRnxFX0.rhxbGxE/z2QfnIQfsrUfq0m.wzg5QJy', 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -99,7 +103,7 @@ ALTER TABLE `productes`
 -- AUTO_INCREMENT for table `usuaris`
 --
 ALTER TABLE `usuaris`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
