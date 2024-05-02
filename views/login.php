@@ -16,8 +16,8 @@
                     <p class="error"><?php echo $_GET['error']; ?></p>
                 <?php } ?>
                 <div class="form-group">
-                    <label for="uname">Usuari</label>
-                    <input type="text" name="uname" id="uname" class="form-control" placeholder="usuari" required>
+                    <label for="usuari">Usuari</label>
+                    <input type="text" name="usuari" id="usuari" class="form-control" placeholder="usuari" required>
                 </div>
                 <div class="form-group">
                     <label for="password">Contrasenya</label>
