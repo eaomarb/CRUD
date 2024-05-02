@@ -6,7 +6,7 @@ require_once $base . 'db.php';
 
 function handleLogin($user, $pwd) {
     if(!isset($user) || !isset($pwd)){
-        head('Location: ../views/login.php');
+        header('Location: ../views/login.php');
         exit();
     }
 
