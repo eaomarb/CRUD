@@ -21,7 +21,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 }
 
 // Cargar controlador de la tienda
-require("controllers/BotigaController.php");
+require("controllers/botiga.php");
 
 // Manejar las solicitudes GET y POST relacionadas con la tienda
 if (isset($_GET['action'])) {
