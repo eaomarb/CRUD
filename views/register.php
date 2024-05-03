@@ -6,15 +6,18 @@
     <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
-
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<div class="text-right">
+            <a class="btn btn-secondary" role="button" href="../index.php"><ion-icon name="exit-outline"></ion-icon> Tornar</a>
+        </div>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">
             <form class="login-form" action="../controllers/register.php" method="post">
                 <h2>Register</h2>
-                <?php if (isset($_GET['error'])) { ?>
-                    <p class="error"><?php echo $_GET['error']; ?></p>
-                <?php } ?>
+                
+
                 <div class="form-group">
                     <label for="uname">Usuari</label>
                     <input type="text" name="usuari" id="usuari" class="form-control" placeholder="usuari" required>

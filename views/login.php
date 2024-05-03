@@ -6,7 +6,11 @@
     <link rel="stylesheet" href="../css/login.css">
 </head>
 <body>
-
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+<div class="text-right">
+            <a class="btn btn-secondary" role="button" href="../index.php"><ion-icon name="exit-outline"></ion-icon> Tornar</a>
+        </div>
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-6">

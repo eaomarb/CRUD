@@ -1,7 +1,13 @@
-img{
-    height: 16rem;
+img {
+  height: 16rem;
 }
 
-.center{
-    text-align: center;
+.center {
+  text-align: center;
+}
+
+.text-right {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
 }

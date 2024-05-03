@@ -14,7 +14,9 @@
 <body>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
-
+    <div class="text-right">
+            <a class="btn btn-secondary" role="button" href="./index.php"><ion-icon name="exit-outline"></ion-icon> Tornar</a>
+        </div>
     <div class="container">
         <div class="py-5 text-center">
             <h1>PRODUCTES MANOLO</h1>
@@ -64,9 +66,7 @@
                 <img src="<?= $result[0]['Imatge'] ?> ">
             </div>
         </div>
-        <div class="text-right">
-            <a class="btn btn-secondary" role="button" href="./index.php"><ion-icon name="exit-outline"></ion-icon> Tornar</a>
-        </div>
+        
     </div>
     </div>
 

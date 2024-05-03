@@ -1,5 +1,4 @@
 <?php
-session_start();
 var_dump($_SESSION);
 ?>
 <!doctype html>
@@ -17,18 +16,22 @@ var_dump($_SESSION);
 
 <body>
     <div class="btn float-right">
-        <a href="views/login.php" class="btn btn-primary mr-2">Login</a>
-        <a href="views/register.php" class="btn btn-secondary">Register</a>
-        <a href="views/register.php" class="btn btn-danger">Tancar sesio</a>
+        
         
         <?php
             // Verificar si el usuario ha iniciado sesión
-            if ($_SESSION['loggedin'] = true) {
-                if (isset($_SESSION['username'])) {
-                    $username = $_SESSION['username'];
-                    echo '<p>Benvingut, ' . $username . '</p>';
-                }
+            $isEditor = 0;
+            if (isset($_SESSION['username'])) {
+                $username = $_SESSION['username'];
+                $isAdmin = $_SESSION['isAdmin'];
+                $isEditor = $_SESSION['isEditor'];
+                echo '<a href="./controllers/logout.php" class="btn btn-danger">Tancar sesio</a>';
+                echo '<p>Benvingut, ' . $username . '</p>';
+            } else {
+                echo '<a href="views/login.php" class="btn btn-primary mr-2">Login</a>';
+                echo '<a href="views/register.php" class="btn btn-secondary">Register</a>';
             }
+
         ?>
     </div>
     <div class="container">
@@ -60,8 +63,12 @@ var_dump($_SESSION);
                     echo "<p class='card-text'>Preu: " . $row['Preu'] . '</p>';
                     echo "<p class='card-text'>Stock: " . $row['Stock'] . '</p>';
                     echo "<a href='?action=show&id=" . $row['Id'] . "' class='btn btn-primary mr-1'>Veure</a>";
-                    echo "<a href='?action=edit&id=" . $row['Id'] . "' class='btn btn-secondary mr-1'>Editar</a>";
-                    echo "<a href='?action=delete&id=" . $row['Id'] . "' class='btn btn-danger'>Eliminar</a>";
+
+                    if ($isEditor == 1) {
+                        echo "<a href='?action=edit&id=" . $row['Id'] . "' class='btn btn-secondary mr-1'>Editar</a>";
+                        echo "<a href='?action=delete&id=" . $row['Id'] . "' class='btn btn-danger'>Eliminar</a>";
+                    }
+
                     echo '</div>';
                     echo '</div>';
                     echo '</div>';
@@ -69,10 +76,13 @@ var_dump($_SESSION);
             ?>
         </div>
 
-        <!-- Botón para agregar un nuevo producto -->
-        <div class="text-center">
-            <a href="?action=new" class="btn btn-success btn-lg">Afegir un nou producte</a>
-        </div>
+        <?php
+            if ($isEditor == 1) {
+                echo '<div class="text-center">';
+                echo '<a href="?action=new" class="btn btn-success btn-lg">Afegir un nou producte</a>';
+                echo '</div>';
+            }
+        ?>
     </div>
 
 </body>

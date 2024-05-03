@@ -1,8 +1,19 @@
 <?php
-session_start();
 $base = '../';  // Ruta base per a la inclusió d'arxius
 require_once $base . 'db.php';  // Inclou l'arxiu de connexió a la base de dades
-
+$status = session_status();
+if($status == PHP_SESSION_NONE){
+    //There is no active session
+    session_start();
+}else
+if($status == PHP_SESSION_DISABLED){
+    //Sessions are not available
+}else
+if($status == PHP_SESSION_ACTIVE){
+    //Destroy current and start new one
+    session_destroy();
+    session_start();
+}
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['usuari']) && isset($_POST['contrasenya'])) {
         $usuari = $_POST['usuari'];
@@ -29,8 +40,16 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($usuari_db && password_verify($contrasenya, $usuari_db['Contrasenya'])) {
             $_SESSION['loggedin'] = true;
             $_SESSION['username'] = $usuari_db['Usuari'];
-            $_SESSION['isAdmin'] = $isAdmin;
-            $_SESSION['isEditor'] = $isEditor;
+            if ($isAdmin['Administrador'] == 1) {  // Verificar si el usuario es administrador
+                $_SESSION['isAdmin'] = 1;  // Asignar 1 si es administrador
+            } else {
+                $_SESSION['isAdmin'] = 0;  // Si no es administrador, asignar 0 (opcional, pero recomendado para evitar errores)
+            }
+            if ($isEditor['Editor'] == 1) {  // Verificar si el usuario es editor
+                $_SESSION['isEditor'] = 1;  // Asignar 1 si es editor
+            } else {
+                $_SESSION['isEditor'] = 0;  // Si no es editor, asignar 0 (opcional, pero recomendado para evitar errores)
+            }
             header('Location: ../index.php');
             exit;
         } else {
