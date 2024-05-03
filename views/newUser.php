@@ -14,48 +14,36 @@
 
 <div class="container">
     <div class="py-5 text-center">
-        <h1>PRODUCTES MANOLO</h1>
-        <h3>PRODUCTES NOUS</h3>
+        <h1>Nou Usuari</h1>
+        <h3>Escull els paràmetres de l'usuari</h3>
     </div>
     <div class="alert alert-primary text-center" role="alert">
-        Vista de creació d'alumne
+        Vista de creació d'usuari
     </div>
     <div class="text-left">
-        <form method="POST" action="./controllers/users.php">
+        <form method="POST" action="../controllers/users.php">
             <div class="form-group row">
-                <label for="Nom" class="col-sm-2 col-form-label font-weight-bold">Nom</label>
+                <label for="Usuari" class="col-sm-2 col-form-label font-weight-bold">Usuari</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="Nom" id="Nom" required>
+                    <input type="text" class="form-control" name="Usuari" id="Usuari" required>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="Preu" class="col-sm-2 col-form-label font-weight-bold">Preu</label>
+                <label for="Preu" class="col-sm-2 col-form-label font-weight-bold">Contrasenya</label>
                 <div class="col-sm-10">
-                    <input type="number" step=".01" class="form-control" name="Preu" id="Preu" required>
+                    <input type="text" step=".01" class="form-control" name="Contrasenya" id="Contrasenya" required>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="Stock" class="col-sm-2 col-form-label font-weight-bold">Stock</label>
+                <label for="Stock" class="col-sm-2 col-form-label font-weight-bold">Administrador</label>
                 <div class="col-sm-10">
-                    <input type="number" class="form-control" name="Stock" id="Stock" required>
+                    <input type="number" class="form-control" name="Administrador" id="Administrador" required>
                 </div>
             </div>
             <div class="form-group row">
-                <label for="Mides" class="col-sm-2 col-form-label font-weight-bold">Mides</label>
+                <label for="Mides" class="col-sm-2 col-form-label font-weight-bold">Editor</label>
                 <div class="col-sm-10">
-                    <input type="text" class="form-control" name="Mides" id="Mides" required>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="Descripció" class="col-sm-2 col-form-label font-weight-bold">Descripció</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="Descripció" id="Descripció" required>
-                </div>
-            </div>
-            <div class="form-group row">
-                <label for="Imatge" class="col-sm-2 col-form-label font-weight-bold">Imatge</label>
-                <div class="col-sm-10">
-                    <input type="text" class="form-control" name="Imatge" id="Imatge" required>
+                    <input type="number" class="form-control" name="Editor" id="Editor" required>
                 </div>
             </div>
             <input type="hidden" name="action" value="add">
