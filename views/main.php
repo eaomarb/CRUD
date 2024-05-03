@@ -64,7 +64,7 @@ var_dump($_SESSION);
                     echo "<div class='card-img-top'><img src='" . $row['Imatge'] . "'>" . '</div>';
                     echo "<div class='card-body'>";
                     echo '<p class="card-text">' . $row['Nom'] . '</p>';
-                    echo "<p class='card-text'>Preu: " . $row['Preu'] . '</p>';
+                    echo "<p class='card-text'>Preu: " . $row['Preu'] . '€</p>';
                     echo "<p class='card-text'>Stock: " . $row['Stock'] . '</p>';
                     echo "<a href='?action=show&id=" . $row['Id'] . "' class='btn btn-primary mr-1'>Veure</a>";
 
