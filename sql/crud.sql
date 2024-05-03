@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 02, 2024 at 11:08 PM
+-- Generation Time: May 03, 2024 at 08:54 PM
 -- Server version: 10.11.6-MariaDB-0+deb12u1
 -- PHP Version: 8.2.18
 
@@ -42,12 +42,9 @@ CREATE TABLE `productes` (
 --
 
 INSERT INTO `productes` (`Id`, `Nom`, `Preu`, `Stock`, `Mides`, `Descripció`, `Imatge`) VALUES
-(2, 'Xiaomi Redmi Note 13 Pro 5G 12/512GB Negro Libre', 356.95, 12, 'Alto: 16,115 cm, Ample: 7,424 cm, Gruix: 0,79 cm', 'Redmi Note 13 Pro 5G no és només un smartphone, és una autèntica revolució en disseny que no passarà desapercebuda. El seu acabat, que només es troba en terminals premium, captivarà totes les mirades. Amb una pantalla corbada, aquest dispositiu es sent com una joia a les teves mans, i el seu estil és innegable. No content de ser simplement elegant, el Redmi Note 13 Pro 5G també juga amb els seus colors perquè trobis l\'estil perfecte per a tu. A més, els seus vores plans faciliten una adherència precisa i còmoda.', 'https://thumb.pccomponentes.com/w-530-530/articles/1080/10804900/1929-xiaomi-redmi-note-13-pro-5g-12-512gb-negro-libre.jpg'),
-(13, 'Fanatec ClubSport WRC Bundle', 1239, 5, 'Alt: 70 cm, Ample: 50 cm, Gruix: 30 cm', 'Oficialment llicenciat pel Campionat del Món de Ral·lis (WRC), el volant CSL Elite WRC és perfecte per dominar les etapes de ral·li més exigents.', 'https://fanatec.com/media/image/d8/73/ec/Product_thumbnail_Clubsport_WRC_Bundle.jpg'),
-(15, '1', 1, 1, '1', '1', 'https://cdn.grupoelcorteingles.es/SGFM/dctm/MEDIA03/202309/11/00197578530764____18__640x640.jpg'),
-(16, '3', 3, 3, '3', '3', 'https://http2.mlstatic.com/D_NQ_NP_890564-MLA54008978956_022023-O.webp'),
-(17, '5', 5, 5, '5', '5', 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSzJeFR2EBer0dKTgaUcO0cccZPxscfkpcb8vENUcUimw&s'),
-(20, '7', 7, 7, '7', '7', 'https://thumb.pccomponentes.com/w-530-530/articles/1002/10025796/1563-horizon-forbidden-west-ps4.jpg');
+(2, 'Apple iPhone 15 Pro Max 256GB Titanio Negro Libre', 1295, 18, ', \'Alt: 15,99 cm, Ample: 7,67 cm, Gruix: 0,93', 'Forjat en titani i amb el revolucionari xip A17 Pro, un botó Acció personalitzable i el sistema de càmeres més potent que hagi tingut un iPhone.', 'https://m.media-amazon.com/images/I/81fYvFvX-8L._AC_UF1000,1000_QL80_.jpg'),
+(13, 'Fanatec ClubSport WRC Bundle', 1239, 100, 'Alt: 70 cm, Ample: 50 cm, Gruix: 30 cm', 'Oficialment llicenciat pel Campionat del Món de Ral·lis (WRC), el volant CSL Elite WRC és perfecte per dominar les etapes de ral·li més exigents.', 'https://fanatec.com/media/image/d8/73/ec/Product_thumbnail_Clubsport_WRC_Bundle.jpg'),
+(22, 'Xiaomi Redmi Note 13 Pro 5G 12/512GB Negro Libre', 356.95, 7, 'Alt: 16,115 cm, Ample: 7,424 cm, Gruix: 0,79 cm', 'Redmi Note 13 Pro 5G no és només un smartphone, és una autèntica revolució en disseny que no passarà desapercebuda. El seu acabat, que només es troba en terminals premium, captivarà totes les mirades. Amb una pantalla corbada, aquest dispositiu es sent com una joia a les teves mans, i el seu estil és innegable. No content de ser simplement elegant, el Redmi Note 13 Pro 5G també juga amb els seus colors perquè trobis l\\\'estil perfecte per a tu. A més, els seus vores plans faciliten una adherència precisa i còmoda.', 'https://thumb.pccomponentes.com/w-530-530/articles/1080/10804900/1929-xiaomi-redmi-note-13-pro-5g-12-512gb-negro-libre.jpg');
 
 -- --------------------------------------------------------
 
@@ -68,10 +65,9 @@ CREATE TABLE `usuaris` (
 --
 
 INSERT INTO `usuaris` (`Id`, `Usuari`, `Contrasenya`, `Administrador`, `Editor`) VALUES
-(1, 'fran', '$2y$10$VnRDQRIy14VPh940LohQG.JUTGJeNvZMLpPsHLKUYiEeOui4ooYF2', 1, 0),
-(7, 'omar', '$2y$10$aIGBIHTj2AqEEwHaZiDRNeyrFlckHGUsgsC1qvncg6YCuRhe3BTfS', 1, 0),
-(8, 'klk', '$2y$10$t8DCaRO7gPd01iqQA6nKfuVubpnLom9CdeHYmBzv28yIISIrJmbJu', 1, 0),
-(9, 'alo', '$2y$10$kkHljIdBA.u2dmjRnxFX0.rhxbGxE/z2QfnIQfsrUfq0m.wzg5QJy', 0, 0);
+(1, 'fran', '$2y$10$4t.XRZ.rMk16zTr.Z5fdhuP1q7HdL1G8NORmJl4oNmYqLs8qkbKcy', 1, 1),
+(7, 'omar', '$2y$10$2slVxRtcwmLPfjfuzdpdmO99Y87pSOzZtUaS8u90TFZhrQzxeNT/m', 1, 1),
+(8, 'usuari', '$2y$10$Zk80aiCMtKFT01/TmDaCS.Zcs2/7u5a9Sfgeia7A5Rr0ULkpDv39.', 0, 0);
 
 --
 -- Indexes for dumped tables
@@ -97,13 +93,13 @@ ALTER TABLE `usuaris`
 -- AUTO_INCREMENT for table `productes`
 --
 ALTER TABLE `productes`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
 
 --
 -- AUTO_INCREMENT for table `usuaris`
 --
 ALTER TABLE `usuaris`
-  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `Id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
