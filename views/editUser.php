@@ -20,7 +20,7 @@
         Vista d'edició dels usuaris
     </div>
     <div class="text-left">
-        <form method="POST" action="../controllers/users.php">
+        <form method="POST" action="./index.php">
             <!-- Afegeix un camp ocult on fa referencia la ID -->
         <input type="hidden" name="Id" value="<?php echo isset($result[0]['Id']) ? $result[0]['Id'] : ''; ?>">
             <div class="form-group row">

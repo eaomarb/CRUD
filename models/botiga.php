@@ -1,7 +1,7 @@
 <?php
 
 //base de dades
-require("db.php");
+require_once("db.php");
 
 function modConnect() {
     global $conn;

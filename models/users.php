@@ -1,21 +1,22 @@
 <?php
 
 // Incloure l'arxiu de la base de dades
-require("db.php");
+require_once("db.php");
 
 // Funció per establir connexió amb la base de dades
-function modConnect() {
+function modConnectUsuaris() {
     global $conn;
     return $conn;
 }
 
 // Funció per obtenir tots els usuaris o un usuari específic per ID
-function modQuery($Id = null) {
-    modConnect();
+function modQueryUsuaris($Id = null) {
+    modConnectUsuaris();
 
     try {
         if ($Id != null) {
             $stmt = $GLOBALS['conn']->prepare("SELECT * FROM usuaris WHERE Id=" . $Id); 
+            echo ' hola';
         }
         else {
             $stmt = $GLOBALS['conn']->prepare("SELECT * FROM usuaris ORDER BY Id ASC"); 
@@ -32,8 +33,8 @@ function modQuery($Id = null) {
 }
 
 // Funció per afegir un nou usuari
-function modAdd($Usuari, $Contrasenya, $Administrador, $Editor) {
-    modConnect();
+function modAddUsuari($Usuari, $Contrasenya, $Administrador, $Editor) {
+    modConnectUsuaris();
 		
     try {
         $sql = "INSERT INTO usuaris (Usuari, Contrasenya, Administrador, Editor) 
@@ -51,8 +52,8 @@ function modAdd($Usuari, $Contrasenya, $Administrador, $Editor) {
 }
 
 // Funció per actualitzar un usuari
-function modUpdate($Id, $Usuari, $Contrasenya, $Administrador, $Editor) {
-    modConnect();
+function modUpdateUsuari($Id, $Usuari, $Contrasenya, $Administrador, $Editor) {
+    modConnectUsuaris();
 		
     try {
         $sql = "UPDATE usuaris
@@ -71,8 +72,8 @@ function modUpdate($Id, $Usuari, $Contrasenya, $Administrador, $Editor) {
 }
 
 // Funció per eliminar un usuari
-function modDelete($Id) {
-    modConnect();
+function modDeleteUsuari($Id) {
+    modConnectUsuaris();
 		
     try {
         $sql = "DELETE FROM usuaris WHERE Id=".$Id;

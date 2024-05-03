@@ -33,7 +33,7 @@ var_dump($_SESSION);
             }
 
             if ($isAdmin == 1){
-                echo '<a href="views/mainUser.php" class="btn btn-primary mr-2">Editar usuaris</a>';
+                echo '<a href="?action=showUsuaris" class="btn btn-primary mr-2">Editar usuaris</a>';
             }
 
         ?>

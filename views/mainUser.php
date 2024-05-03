@@ -1,7 +1,7 @@
 <?php
+session_start();
 var_dump($_SESSION);
-$result = []; // Inicializar como un array vacío
-
+print_r($_POST);
 ?>
 <!doctype html>
 <html lang="ca">
@@ -18,7 +18,7 @@ $result = []; // Inicializar como un array vacío
 
 <body>
 <div class="text-left">
-            <a class="btn btn-secondary" role="button" href="..\index.php"><ion-icon name="exit-outline"></ion-icon> Tornar</a>
+            <a class="btn btn-secondary" role="button" href=".\index.php"><ion-icon name="exit-outline"></ion-icon> Tornar</a>
         </div>
     <div class="btn float-right">
         
@@ -32,8 +32,8 @@ $result = []; // Inicializar como un array vacío
                 $isEditor = $_SESSION['isEditor'];
                 echo '<a href="./controllers/logout.php" class="btn btn-danger">Tancar sesio</a>';
                 echo '<p>Benvingut, ' . $username . '</p>';
-            } 
-            
+            }
+
         ?>
     </div>
     
@@ -63,24 +63,24 @@ $result = []; // Inicializar como un array vacío
 							<th class="align-middle">CONSTRASENYA</th>
 							<th class="align-middle">PERMÍS ADMINISTRADOR</th>
                             <th class="align-middle">PERMÍS EDITOR</th>
-							<th class="align-middle text-right"><a class="btn btn-primary" role="button" href="?action=new">Afegir</a></th>
+							<th class="align-middle text-right"><a class="btn btn-primary" role="button" href="?action=newUsuari">Afegir</a></th>
 						</tr>
 					</thead>
 					<tbody>
 						<?php
-							foreach($result as $row) {
-								echo "<tr>";
-								echo "<td class='align-middle'>" . $row['Id'] . "</td>";
-								echo "<td class='align-middle'>" . $row['Usuari'] . "</td>";
-								echo "<td class='align-middle'>" . $row['Contrasenya'] . "</td>";
-                                echo "<td class='align-middle'>" . $row['Administrador'] . "</td>";
-                                echo "<td class='align-middle'>" . $row['Editor'] . "</td>";
-								echo "<a class='btn btn-warning' role='button' href='?action=edit&id=".$row['Id']."'>Editar</a> ";
-								echo "<a class='btn btn-danger' role='button' href='?action=delete&id=".$row['Id']."'>Eliminar</a> ";
-								echo "</td>";
-								echo "</tr>";
-							}
-						?>
+                            foreach ($result as $row) {
+                                echo '<tr>';
+                                echo "<td class='align-middle'>" . $row['Id'] . '</td>';
+                                echo "<td class='align-middle'>" . $row['Usuari'] . '</td>';
+                                echo "<td class='align-middle'>" . $row['Contrasenya'] . '</td>';
+                                echo "<td class='align-middle'>" . $row['Administrador'] . '</td>';
+                                echo "<td class='align-middle'>" . $row['Editor'] . '</td>';
+                                echo "<a class='btn btn-warning' role='button' href='?action=edit&id=" . $row['Id'] . "'>Editar</a> ";
+                                echo "<a class='btn btn-danger' role='button' href='?action=delete&id=" . $row['Id'] . "'>Eliminar</a> ";
+                                echo '</td>';
+                                echo '</tr>';
+                            }
+                        ?>
 					</tbody>
 				</table>
 			</div>
