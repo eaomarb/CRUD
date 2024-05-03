@@ -1,10 +1,11 @@
 <?php
-$base = '../';  // Ruta base per a la inclusió d'arxius
-require_once $base . 'db.php';  // Inclou l'arxiu de connexió a la base de dades
+session_start();
+
+$base = '../';
+require_once $base . 'db.php';
 $status = session_status();
 if($status == PHP_SESSION_NONE){
     //There is no active session
-    session_start();
 }else
 if($status == PHP_SESSION_DISABLED){
     //Sessions are not available
