@@ -1,5 +1,7 @@
 <?php
 var_dump($_SESSION);
+$result = []; // Inicializar como un array vacío
+
 ?>
 <!doctype html>
 <html lang="ca">
@@ -11,10 +13,13 @@ var_dump($_SESSION);
     <link rel="stylesheet" href="css/main.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <title>CRUD PRODUCTES</title>
+    <title>Administració d'Usuari</title>
 </head>
 
 <body>
+<div class="text-left">
+            <a class="btn btn-secondary" role="button" href="..\index.php"><ion-icon name="exit-outline"></ion-icon> Tornar</a>
+        </div>
     <div class="btn float-right">
         
         <?php
@@ -27,21 +32,15 @@ var_dump($_SESSION);
                 $isEditor = $_SESSION['isEditor'];
                 echo '<a href="./controllers/logout.php" class="btn btn-danger">Tancar sesio</a>';
                 echo '<p>Benvingut, ' . $username . '</p>';
-            } else {
-                echo '<a href="views/login.php" class="btn btn-primary mr-2">Login</a>';
-                echo '<a href="views/register.php" class="btn btn-secondary">Register</a>';
-            }
-
-            if ($isAdmin == 1){
-                echo '<a href="views/mainUser.php" class="btn btn-primary mr-2">Editar usuaris</a>';
-            }
-
+            } 
+            
         ?>
     </div>
+    
     <div class="container">
         <div class="py-5 text-center">
-            <h1>PRODUCTES MANOLO</h1>
-            <h3>LLISTA DELS PRODUCTES</h3>
+            <h1>Administració</h1>
+            <h3>Control d'Usuaris</h3>
         </div>
 
         <?php
@@ -55,30 +54,36 @@ var_dump($_SESSION);
         ?>
 
 
-        <div class="row mb-4">
-            <?php
-                // Recorrer els resultats per mostrar-los a la taula
-                foreach ($result as $row) {
-                    echo "<div class='col-md-4'>";
-                    echo "<div class='card'>";
-                    echo "<div class='card-img-top'><img src='" . $row['Imatge'] . "'>" . '</div>';
-                    echo "<div class='card-body'>";
-                    echo '<p class="card-text">' . $row['Nom'] . '</p>';
-                    echo "<p class='card-text'>Preu: " . $row['Preu'] . '€</p>';
-                    echo "<p class='card-text'>Stock: " . $row['Stock'] . '</p>';
-                    echo "<a href='?action=show&id=" . $row['Id'] . "' class='btn btn-primary mr-1'>Veure</a>";
-
-                    if ($isEditor == 1) {
-                        echo "<a href='?action=edit&id=" . $row['Id'] . "' class='btn btn-secondary mr-1'>Editar</a>";
-                        echo "<a href='?action=delete&id=" . $row['Id'] . "' class='btn btn-danger'>Eliminar</a>";
-                    }
-
-                    echo '</div>';
-                    echo '</div>';
-                    echo '</div>';
-                }
-            ?>
-        </div>
+<div class="table-responsive-sm">
+				<table class="table table-striped">
+					<thead class="thead-dark">
+						<tr>
+							<th class="align-middle">ID</th>
+							<th class="align-middle">USUARI</th>
+							<th class="align-middle">CONSTRASENYA</th>
+							<th class="align-middle">PERMÍS ADMINISTRADOR</th>
+                            <th class="align-middle">PERMÍS EDITOR</th>
+							<th class="align-middle text-right"><a class="btn btn-primary" role="button" href="?action=new">Afegir</a></th>
+						</tr>
+					</thead>
+					<tbody>
+						<?php
+							foreach($result as $row) {
+								echo "<tr>";
+								echo "<td class='align-middle'>" . $row['Id'] . "</td>";
+								echo "<td class='align-middle'>" . $row['Usuari'] . "</td>";
+								echo "<td class='align-middle'>" . $row['Contrasenya'] . "</td>";
+                                echo "<td class='align-middle'>" . $row['Administrador'] . "</td>";
+                                echo "<td class='align-middle'>" . $row['Editor'] . "</td>";
+								echo "<a class='btn btn-warning' role='button' href='?action=edit&id=".$row['Id']."'>Editar</a> ";
+								echo "<a class='btn btn-danger' role='button' href='?action=delete&id=".$row['Id']."'>Eliminar</a> ";
+								echo "</td>";
+								echo "</tr>";
+							}
+						?>
+					</tbody>
+				</table>
+			</div>
 
         <?php
             if ($isEditor == 1) {

@@ -1,103 +1,60 @@
-<?php
-var_dump($_SESSION);
-$result = []; // Inicializar como un array vacío
-
-?>
 <!doctype html>
 <html lang="ca">
-
 <head>
-    <!-- Metadades necessàries -->
+    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="css/main.css">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <title>Administració d'Usuari</title>
+    <title>CRUD PRODUCTES</title>
 </head>
-
 <body>
-    <div class="btn float-right">
-        
-        <?php
-            // Verificar si el usuario ha iniciado sesión
-            $isEditor = 0;
-            $isAdmin = 0;
-            if (isset($_SESSION['username'])) {
-                $username = $_SESSION['username'];
-                $isAdmin = $_SESSION['isAdmin'];
-                $isEditor = $_SESSION['isEditor'];
-                echo '<a href="./controllers/logout.php" class="btn btn-danger">Tancar sesio</a>';
-                echo '<p>Benvingut, ' . $username . '</p>';
-            } else {
-                echo '<a href="views/login.php" class="btn btn-primary mr-2">Login</a>';
-                echo '<a href="views/register.php" class="btn btn-secondary">Register</a>';
-            }
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
-            if ($isAdmin == 1){
-                echo '<a href="views/editUser.php" class="btn btn-primary mr-2">Editar usuaris</a>';
-            }
-
-        ?>
+<div class="container">
+    <div class="py-5 text-center">
+        <h1>Editar Usuari</h1>
     </div>
-    <div class="container">
-        <div class="py-5 text-center">
-            <h1>Administració</h1>
-            <h3>Control d'Usuaris</h3>
-        </div>
-
-        <?php
-            // Comprovar si hi ha un missatge de success
-            if (isset($missatge['Success'])) {
-                echo "<div class='alert alert-success' role='alert'>{$missatge['Success']}</div>";
-            } elseif (isset($missatge['Error'])) {
-                // Comprovar si hi ha un missatge d'error
-                echo "<div class='alert alert-danger' role='alert'>{$missatge['Error']}</div>";
-            }
-        ?>
-
-
-<div class="table-responsive-sm">
-				<table class="table table-striped">
-					<thead class="thead-dark">
-						<tr>
-							<th class="align-middle">ID</th>
-							<th class="align-middle">USUARI</th>
-							<th class="align-middle">CONSTRASENYA</th>
-							<th class="align-middle">PERMÍS ADMINISTRADOR</th>
-                            <th class="align-middle">PERMÍS EDITOR</th>
-							<th class="align-middle text-right"><a class="btn btn-primary" role="button" href="?action=new">Afegir</a></th>
-						</tr>
-					</thead>
-					<tbody>
-						<?php
-							foreach($result as $row) {
-								echo "<tr>";
-								echo "<td class='align-middle'>" . $row['Id'] . "</td>";
-								echo "<td class='align-middle'>" . $row['Usuari'] . "</td>";
-								echo "<td class='align-middle'>" . $row['Contrasenya'] . "</td>";
-                                echo "<td class='align-middle'>" . $row['Administrador'] . "</td>";
-                                echo "<td class='align-middle'>" . $row['Editor'] . "</td>";
-								echo "<a class='btn btn-success' role='button' href='?action=show&id=".$row['id']."'>Mostrar</a> ";
-								echo "<a class='btn btn-warning' role='button' href='?action=edit&id=".$row['id']."'>Editar</a> ";
-								echo "<a class='btn btn-danger' role='button' href='?action=delete&id=".$row['id']."'>Eliminar</a> ";
-								echo "</td>";
-								echo "</tr>";
-							}
-						?>
-					</tbody>
-				</table>
-			</div>
-
-        <?php
-            if ($isEditor == 1) {
-                echo '<div class="text-center">';
-                echo '<a href="?action=new" class="btn btn-success btn-lg">Afegir un nou producte</a>';
-                echo '</div>';
-            }
-        ?>
+    <div class="alert alert-warning text-center" role="alert">
+        Vista d'edició dels usuaris
     </div>
+    <div class="text-left">
+        <form method="POST" action="./controllers/users.php">
+            <!-- Afegeix un camp ocult on fa referencia la ID -->
+        <input type="hidden" name="Id" value="<?php echo isset($result[0]['Id']) ? $result[0]['Id'] : ''; ?>">
+            <div class="form-group row">
+                <label for="Nom" class="col-sm-2 col-form-label font-weight-bold">Usuari</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control-plaintext" id="Usuari" name="Usuari" value="<?php echo isset($result[0]['Usuari']) ? $result[0]['Usuari'] : ''; ?>">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Preu" class="col-sm-2 col-form-label font-weight-bold">Contrasenya</label>
+                <div class="col-sm-10">
+                    <input type="text" class="form-control-plaintext" id="Contrasenya" name="Contrasenya" value="<?php echo isset($result[0]['Contrasenya']) ? $result[0]['Contrasenya'] : ''; ?>">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Stock" class="col-sm-2 col-form-label font-weight-bold">Administrador</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control-plaintext" id="Administrador" name="Administrador" value="<?php echo isset($result[0]['Administrador']) ? $result[0]['Administrador'] : ''; ?>">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="Mides" class="col-sm-2 col-form-label font-weight-bold">Editor</label>
+                <div class="col-sm-10">
+                    <input type="number" class="form-control-plaintext" id="Editor" name="Editor" value="<?php echo isset($result[0]['Editor']) ? $result[0]['Editor'] : ''; ?>">
+                </div>
+            </div>
 
+            <input type="hidden" name="action" value="up">
+            <div class="text-right">
+                <button type="submit" class="btn btn-primary"><ion-icon name="save-outline"></ion-icon></button>
+                <a class="btn btn-secondary" role="button" href="./index.php"><ion-icon name="exit-outline"></ion-icon></a>
+            </div>
+        </form>                
+    </div>
+</div>
 </body>
-
 </html>
