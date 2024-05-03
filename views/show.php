@@ -2,13 +2,11 @@
 <html lang="ca">
 
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="css/show.css">
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <title>PRODUCTES MANOLO</title>
+    <title>Vista del producte</title>
 </head>
 
 <body>
@@ -18,11 +16,7 @@
             <a class="btn btn-secondary" role="button" href="./index.php"><ion-icon name="exit-outline"></ion-icon> Tornar</a>
         </div>
     <div class="container">
-        <div class="py-5 text-center">
-            <h1>PRODUCTES MANOLO</h1>
-            <h3>VEURE PRODUCTES</h3>
-        </div>
-        <div class="alert alert-info text-center" role="alert">
+        <div class="alert alert-info text-center" role="alert"style="margin-top: 1rem;">
             Vista del producte
         </div>
         <div class="text-left">

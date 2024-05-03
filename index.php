@@ -1,5 +1,4 @@
 <?php
-echo 'holaaa';
 $status = session_status();
 if ($status == PHP_SESSION_NONE) {
     // There is no active session
@@ -12,16 +11,8 @@ if ($status == PHP_SESSION_NONE) {
     session_start();
 }
 
-/**
- * Aquest arxiu espera 3 tipus de peticions:
- * - Peticions sense cap paràmetre: retornarà la vista principal (MainView.php)
- * - Peticions per GET: accions per mostrar les vistes de formulari de nou alumne, editar alumne i esborrar alumne. També la petició d'esborrar un alumne.
- * - Peticions per POST: accions que venen d'un formulari: afegir un nou alumne o modificar un alumne.
- *
- * En funció de la petició, farà unes crIdes o unes altres al controlador (AlumneController.php)
- */
-require_once ('controllers/botiga.php');
-require_once ('controllers/users.php');
+require ('controllers/botiga.php');
+require ('controllers/users.php');
 $isEditor = 0;
 $isAdmin = 0;
 
@@ -32,7 +23,6 @@ if (isset($_GET['action'])) {
                 deleteProductes($_GET['id']);
             }
         }
-
         loadMainView();
     } elseif ($_GET['action'] == 'new') {
         if ($_SESSION['isEditor'] == 1) {
@@ -48,46 +38,29 @@ if (isset($_GET['action'])) {
         if (isset($_GET['id'])) {
             loadShowProductesView($_GET['id']);
         }
-    }
-    if ($_GET['action'] == 'deleteUsuari') {
+    } elseif ($_GET['action'] == 'showUsuaris' && $_SESSION['isAdmin'] == 1) {
+        loadUsers();
+    } elseif ($_GET['action'] == 'updateUsuari' && $_SESSION['isAdmin'] == 1) {
+        if (isset($_GET['id'])) {
+            loadEditUser($_GET['id']);
+            echo $_GET['id'];
+        }
+    } elseif ($_GET['action'] == 'deleteUsuari') {
         if (isset($_GET['id'])) {
             if ($_SESSION['isAdmin'] == 1) {
                 deleteUsuari($_GET['id']);
             }
         }
-
-        loadMainView();
-    } elseif ($_GET['action'] == 'newUser') {
+        loadUsers();
+    } elseif ($_GET['action'] == 'newUsuari') {
         if ($_SESSION['isAdmin'] == 1) {
             loadNewUser();
-        }
-    } elseif ($_GET['action'] == 'editUser') {
-        if (isset($_GET['id'])) {
-            if ($_SESSION['isAdmin'] == 1) {
-                loadEditUser($_GET['id']);
-            }
-        }
-    } elseif ($_GET['action'] == 'showUsuaris') {
-        if ($_SESSION['isAdmin'] == 1) {
-            loadUsers();
-        }
-    }
-} elseif (isset($_POST['action']) && $_SESSION['isAdmin'] == 1) {
-    if ($_POST['action'] == 'addUser') {
-        $msg = null;
-        if (isset($_POST['Usuari']) && isset($_POST['Contrasenya']) && isset($_POST['Administrador']) && isset($_POST['Editor'])) {
-            $msg = addUsuari($_POST['Usuari'], $_POST['Contrasenya'], $_POST['Administrador'], $_POST['Editor']);
-        }
-        loadUsers($msg);
-    } elseif ($_POST['action'] == 'updateUsuari' && $_SESSION['isAdmin'] == 1) {
-        if (isset($_POST['Id']) && isset($_POST['Usuari']) && isset($_POST['Contrasenya']) && isset($_POST['Administrador']) && isset($_POST['Editor'])) {
-            updateUsuari($_POST['Id'], $_POST['Nom'], $_POST['Preu'], $_POST['Stock'], $_POST['Mides'], $_POST['Descripció'], $_POST['Imatge']);
         }
     } else {
         loadMainView();
     }
-} elseif (isset($_POST['action']) && $_SESSION['isEditor'] == 1) {
-    if ($_POST['action'] == 'add') {
+} elseif (isset($_POST['action'])) {
+    if ($_POST['action'] == 'add' && $_SESSION['isEditor'] == 1) {
         $msg = null;
         if (isset($_POST['Nom']) && isset($_POST['Preu']) && isset($_POST['Stock']) && isset($_POST['Mides']) && isset($_POST['Descripció']) && isset($_POST['Imatge'])) {
             $msg = addProductes($_POST['Nom'], $_POST['Preu'], $_POST['Stock'], $_POST['Mides'], $_POST['Descripció'], $_POST['Imatge']);
@@ -98,53 +71,28 @@ if (isset($_GET['action'])) {
             upProductes($_POST['Id'], $_POST['Nom'], $_POST['Preu'], $_POST['Stock'], $_POST['Mides'], $_POST['Descripció'], $_POST['Imatge']);
         }
         loadMainView();
+    } elseif ($_POST['action'] == 'updateUser' && $_SESSION['isAdmin'] == 1) {
+        if (isset($_POST['Id']) && isset($_POST['Usuari']) && isset($_POST['Contrasenya']) && isset($_POST['Administrador']) && isset($_POST['Editor'])) {
+            $contrasenya = $_POST['Contrasenya'];
+            $hashed_password = password_hash($contrasenya, PASSWORD_DEFAULT);
+            updateUsuari($_POST['Id'], $_POST['Usuari'], $hashed_password, $_POST['Administrador'], $_POST['Editor']);
+        }
+
+        loadUsers();
+    } elseif ($_POST['action'] == 'addUser' && $_SESSION['isAdmin'] == 1) {
+        $msg = null;
+        if (isset($_POST['Usuari']) && isset($_POST['Contrasenya']) && isset($_POST['Administrador']) && isset($_POST['Editor'])) {
+            $contrasenya = $_POST['Contrasenya'];
+            $hashed_password = password_hash($contrasenya, PASSWORD_DEFAULT);
+            $msg = addUsuari($_POST['Usuari'], $hashed_password, $_POST['Administrador'], $_POST['Editor']);
+        }
+
+        loadUsers($msg);
     } else {
         loadMainView();
     }
 } else {
     loadMainView();
-}
-
-require_once ('controllers/users.php');
-//loadUsers();
-echo 'hola';
-
-if (isset($_GET['action'])) {
-    if ($_GET['action'] == 'deleteUsuari') {
-        if (isset($_GET['id'])) {
-            if ($_SESSION['isAdmin'] == 1) {
-                deleteUsuari($_GET['id']);
-            }
-        }
-
-        loadMainView();
-    } elseif ($_GET['action'] == 'newUser') {
-        if ($_SESSION['isAdmin'] == 1) {
-            loadNewUser();
-        }
-    } elseif ($_GET['action'] == 'editUser') {
-        if (isset($_GET['id'])) {
-            if ($_SESSION['isAdmin'] == 1) {
-                loadEditUser($_GET['id']);
-            }
-        }
-    } elseif ($_GET['action'] == 'showUsuaris') {
-        if ($_SESSION['isAdmin'] == 1) {
-            loadUsers();
-        }
-    }
-} elseif (isset($_POST['action']) && $_SESSION['isAdmin'] == 1) {
-    if ($_POST['action'] == 'addUser') {
-        $msg = null;
-        if (isset($_POST['Usuari']) && isset($_POST['Contrasenya']) && isset($_POST['Administrador']) && isset($_POST['Editor'])) {
-            $msg = addUsuari($_POST['Usuari'], $_POST['Contrasenya'], $_POST['Administrador'], $_POST['Editor']);
-        }
-        loadUsers($msg);
-    } elseif ($_POST['action'] == 'updateUsuari' && $_SESSION['isAdmin'] == 1) {
-        if (isset($_POST['Id']) && isset($_POST['Usuari']) && isset($_POST['Contrasenya']) && isset($_POST['Administrador']) && isset($_POST['Editor'])) {
-            updateUsuari($_POST['Id'], $_POST['Nom'], $_POST['Preu'], $_POST['Stock'], $_POST['Mides'], $_POST['Descripció'], $_POST['Imatge']);
-        }
-    }
 }
 
 ?>

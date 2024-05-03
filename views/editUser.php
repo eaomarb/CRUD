@@ -1,10 +1,10 @@
 <!doctype html>
 <html lang="ca">
 <head>
-    <!-- Required meta tags -->
+      
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
+     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <title>CRUD PRODUCTES</title>
 </head>
@@ -48,10 +48,10 @@
                 </div>
             </div>
 
-            <input type="hidden" name="action" value="up">
+            <input type="hidden" name="action" value="updateUser">
             <div class="text-right">
                 <button type="submit" class="btn btn-primary"><ion-icon name="save-outline"></ion-icon></button>
-                <a class="btn btn-secondary" role="button" href="./index.php"><ion-icon name="exit-outline"></ion-icon></a>
+                <a class="btn btn-secondary" role="button" href="?action=showUsuaris"><ion-icon name="exit-outline"></ion-icon></a>
             </div>
         </form>                
     </div>

@@ -1,12 +1,11 @@
 <!doctype html>
 <html lang="ca">
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
+     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <title>CRUD ALUMNES</title>
+    <title>Afegir nou usuari</title>
 </head>
 <body>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
@@ -14,14 +13,13 @@
 
 <div class="container">
     <div class="py-5 text-center">
-        <h1>Nou Usuari</h1>
-        <h3>Escull els paràmetres de l'usuari</h3>
+        <h1>Nou usuari</h1>
     </div>
     <div class="alert alert-primary text-center" role="alert">
         Vista de creació d'usuari
     </div>
     <div class="text-left">
-        <form method="POST" action="../controllers/users.php">
+        <form method="POST" action="./index.php">
             <div class="form-group row">
                 <label for="Usuari" class="col-sm-2 col-form-label font-weight-bold">Usuari</label>
                 <div class="col-sm-10">
@@ -46,7 +44,7 @@
                     <input type="number" class="form-control" name="Editor" id="Editor" required>
                 </div>
             </div>
-            <input type="hidden" name="action" value="add">
+            <input type="hidden" name="action" value="addUser">
             <div class="text-right">
                 <button type="submit" class="btn btn-primary"><ion-icon name="save-outline"></ion-icon></button>
                 <a class="btn btn-secondary" role="button" href="./index.php"><ion-icon name="exit-outline"></ion-icon></a>

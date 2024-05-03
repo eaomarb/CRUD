@@ -51,7 +51,6 @@ function modAdd($Nom, $Preu, $Stock, $Mides, $Descripció, $Imatge) {
 		try {
 			$sql = "INSERT INTO productes (Nom, Preu, Stock, Mides, Descripció, Imatge) 
             VALUES ('" . $Nom . "', '" . $Preu . "', '" . $Stock . "', '" . $Mides . "', '" . $Descripció . "', '" . $Imatge . "')";
-			// use exec() because no results are returned
 			if ($GLOBALS['conn']->exec($sql)) {
 				return ["Success" => "Producte afegit correctament"];
 			}
@@ -82,7 +81,6 @@ function modUpdate($Id,$Nom, $Preu, $Stock, $Mides, $Descripció, $Imatge) {
 			$sql = "UPDATE productes
              SET Nom='" . $Nom . "', Preu='" . $Preu . "', Stock='" . $Stock . "', Mides='" . $Mides . "', Descripció='" . $Descripció . "', Imatge='" . $Imatge . "'  
              WHERE id='" . $Id . "'";
-			// use exec() because no results are returned
 			if ($GLOBALS['conn']->exec($sql)) {
 				return ["Success" => "El producte s'ha modificat correctament"];
 			}
@@ -106,7 +104,6 @@ function modDelete($Id) {
 		
 		try {
 			$sql = "DELETE FROM productes WHERE Id=".$Id;
-			// use exec() because no results are returned
 			if ($GLOBALS['conn']->exec($sql)){
 				return ["Success" => "El producte s'ha eliminat correctament"];
 			}

@@ -1,6 +1,3 @@
-<?php
-var_dump($_SESSION);
-?>
 <!doctype html>
 <html lang="ca">
 
@@ -9,9 +6,9 @@ var_dump($_SESSION);
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="css/main.css">
-    <!-- Bootstrap CSS -->
+     
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <title>CRUD PRODUCTES</title>
+    <title>Productes Manolo</title>
 </head>
 
 <body>
@@ -25,14 +22,14 @@ var_dump($_SESSION);
                 $username = $_SESSION['username'];
                 $isAdmin = $_SESSION['isAdmin'];
                 $isEditor = $_SESSION['isEditor'];
-                echo '<a href="./controllers/logout.php" class="btn btn-danger">Tancar sesio</a>';
+                echo '<a href="./controllers/logout.php" class="btn btn-danger">Tancar sessió</a>';
                 echo '<p>Benvingut, ' . $username . '</p>';
             } else {
                 echo '<a href="views/login.php" class="btn btn-primary mr-2">Login</a>';
                 echo '<a href="views/register.php" class="btn btn-secondary">Register</a>';
             }
 
-            if ($isAdmin == 1){
+            if ($isAdmin == 1) {
                 echo '<a href="?action=showUsuaris" class="btn btn-primary mr-2">Editar usuaris</a>';
             }
 
@@ -40,16 +37,13 @@ var_dump($_SESSION);
     </div>
     <div class="container">
         <div class="py-5 text-center">
-            <h1>PRODUCTES MANOLO</h1>
-            <h3>LLISTA DELS PRODUCTES</h3>
+            <h1>Productes Manolo</h1>
         </div>
 
         <?php
-            // Comprovar si hi ha un missatge de success
             if (isset($missatge['Success'])) {
                 echo "<div class='alert alert-success' role='alert'>{$missatge['Success']}</div>";
             } elseif (isset($missatge['Error'])) {
-                // Comprovar si hi ha un missatge d'error
                 echo "<div class='alert alert-danger' role='alert'>{$missatge['Error']}</div>";
             }
         ?>

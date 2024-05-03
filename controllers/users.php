@@ -6,6 +6,11 @@ function getUsuaris()  // Per obtenir els usuaris
     return modQueryUsuaris();
 }
 
+function getUsuari($Id)
+{
+	return modQueryUsuaris($Id);
+}
+
 function addUsuari($Usuari, $Contrasenya, $Administrador, $Editor)  // Afegir un usuari
 {
     return modAddUsuari($Usuari, $Contrasenya, $Administrador, $Editor);
@@ -37,13 +42,13 @@ function loadNewUser()
 
 function loadEditUser($Id)
 {
-    $result = getUsuaris($Id);
-    if ($result) {
-        require_once ('views/editUser.php');
-    } else {
-        // Si no troba el usuari
-        $msg = 'El usuari no existeix.';
-        loadUsers($msg);
-    }
+	$result = getUsuari($Id);
+	if ($result) {
+		require_once ('views/editUser.php');
+	} else {
+		// Si no troba el usuari
+		$msg = 'El usuari no existeix.';
+		loadUsers($msg);
+	}
 }
 ?>

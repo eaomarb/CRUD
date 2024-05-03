@@ -1,7 +1,7 @@
 <?php
 session_start();
-$base = '../';  // Ruta base para la inclusión de archivos
-require_once $base . 'db.php';  // Incluye el archivo de conexión a la base de datos
+$base = '../';
+require_once $base . 'db.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (isset($_POST['usuari']) && isset($_POST['contrasenya'])) {
@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $stmt->execute();
 
         if ($stmt->rowCount() > 0) {
-            $error = 'Lo sentimos, no pudimos completar su registro. El nombre de usuario ya está en uso.';
+            $error = 'Ho sentim, no hem pogut completar el seu registre. Aquest usuari ja existeix.';
             echo "<script>alert('" . $error . "');</script>";
             echo "<script>window.location.href='../views/register.php';</script>";
             exit;

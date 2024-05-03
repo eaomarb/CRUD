@@ -40,21 +40,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if ($usuari_db && password_verify($contrasenya, $usuari_db['Contrasenya'])) {
             $_SESSION['loggedin'] = true;
             $_SESSION['username'] = $usuari_db['Usuari'];
-            if ($isAdmin['Administrador'] == 1) {  // Verificar si el usuario es administrador
-                $_SESSION['isAdmin'] = 1;  // Asignar 1 si es administrador
+            if ($isAdmin['Administrador'] == 1) {  // Verificar si el usuari es administrador
+                $_SESSION['isAdmin'] = 1;  // Assignar 1 si es administrador
             } else {
-                $_SESSION['isAdmin'] = 0;  // Si no es administrador, asignar 0 (opcional, pero recomendado para evitar errores)
+                $_SESSION['isAdmin'] = 0;  // Si no es administrador, asignar 0
             }
-            if ($isEditor['Editor'] == 1) {  // Verificar si el usuario es editor
-                $_SESSION['isEditor'] = 1;  // Asignar 1 si es editor
+            if ($isEditor['Editor'] == 1) {  // Verificar si el usuari es editor
+                $_SESSION['isEditor'] = 1;  // Assignar 1 si es editor
             } else {
-                $_SESSION['isEditor'] = 0;  // Si no es editor, asignar 0 (opcional, pero recomendado para evitar errores)
+                $_SESSION['isEditor'] = 0;  // Si no es editor, asignar 0
             }
             header('Location: ../index.php');
             exit;
         } else {
             $error = 'Usuari o contrasenya incorrectes.';
-            header('Location: login.php?error=' . urlencode($error));
+            header('Location: ../views/login.php?error=' . urlencode($error));
             exit;
         }
     } else {

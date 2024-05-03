@@ -1,24 +1,18 @@
 <!doctype html>
 <html lang="ca">
 <head>
-    <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
-    <title>CRUD ALUMNES</title>
+    <title>Afegir nou producte</title>
 </head>
 <body>
 <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
 <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 
 <div class="container">
-    <div class="py-5 text-center">
-        <h1>PRODUCTES MANOLO</h1>
-        <h3>PRODUCTES NOUS</h3>
-    </div>
-    <div class="alert alert-primary text-center" role="alert">
-        Vista de creació d'alumne
+    <div class="alert alert-primary text-center" role="alert" style="margin-top: 1rem;">
+        Vista de creació d'un producte
     </div>
     <div class="text-left">
         <form method="POST" action="./index.php">
