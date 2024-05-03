@@ -8,7 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $usuari = $_POST['usuari'];
         $contrasenya = $_POST['contrasenya'];
 
-        // Verificar si el usuario ya existe en la base de datos
+        // Verificar si el usauri  ja existeix en la base de dades
         $stmt = $conn->prepare('SELECT * FROM usuaris WHERE Usuari = :usuari');
         $stmt->bindParam(':usuari', $usuari);
         $stmt->execute();
@@ -19,10 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             echo "<script>window.location.href='../views/register.php';</script>";
             exit;
         } else {
-            // Hash de la contraseña antes de guardarla en la base de datos
+            // Hash de la contrasenya guarada en la base de dades
             $hashed_password = password_hash($contrasenya, PASSWORD_DEFAULT);
 
-            // Insertar el nuevo usuario en la base de datos
+            // Afegeix el nou usuari a la base de dades
             $stmt = $conn->prepare('INSERT INTO usuaris (Usuari, Contrasenya) VALUES (:usuari, :contrasenya)');
             $stmt->bindParam(':usuari', $usuari);
             $stmt->bindParam(':contrasenya', $hashed_password);

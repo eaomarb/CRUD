@@ -21,6 +21,7 @@ var_dump($_SESSION);
         <?php
             // Verificar si el usuario ha iniciado sesión
             $isEditor = 0;
+            $isAdmin = 0;
             if (isset($_SESSION['username'])) {
                 $username = $_SESSION['username'];
                 $isAdmin = $_SESSION['isAdmin'];
@@ -30,6 +31,10 @@ var_dump($_SESSION);
             } else {
                 echo '<a href="views/login.php" class="btn btn-primary mr-2">Login</a>';
                 echo '<a href="views/register.php" class="btn btn-secondary">Register</a>';
+            }
+
+            if ($isAdmin = 1){
+                echo '<a href="views/editUser.php" class="btn btn-primary mr-2">Staff</a>';
             }
 
         ?>
